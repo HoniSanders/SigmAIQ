@@ -15,7 +15,7 @@ from langchain.text_splitter import CharacterTextSplitter
 # langchain typing
 from langchain.schema.embeddings import Embeddings
 from langchain.schema.vectorstore import VectorStore
-from langchain.document_loaders.base import BaseLoader, Document
+from langchain_core.document_loaders.base import BaseLoader, Document
 from langchain.schema.document import BaseDocumentTransformer
 
 
