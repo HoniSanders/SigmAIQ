@@ -29,10 +29,13 @@ from langchain.schema.messages import (
 from sigmaiq.llm.toolkits.sigma_toolkit import SigmaToolkit
 from sigmaiq.llm.toolkits.prompts import SIGMA_AGENT_PROMPT
 
-
+try:
+    default_llm = ChatOpenAI(model="gpt-4o")
+except ValidationError as exc:
+    default_llm = None
 def create_sigma_agent(
-    agent_llm: BaseLanguageModel = ChatOpenAI(model="gpt-4o"),
-    rule_creation_llm: BaseLanguageModel = ChatOpenAI(model="gpt-4o"),
+    agent_llm: BaseLanguageModel = default_llm,
+    rule_creation_llm: BaseLanguageModel = default_llm,
     sigma_vectorstore: VectorStore = None,
     toolkit: Type[SigmaToolkit] = SigmaToolkit,
     prompt: Optional[ChatPromptTemplate] = SIGMA_AGENT_PROMPT,
